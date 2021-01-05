@@ -13,7 +13,7 @@ const exibeCliente = (cpf, nome, id) => {
     const conteudoLinha = `
             <td>${cpf}</td>
             <td>${nome}</td>
-            
+            <button type="button" class="btn btn-danger" onclick="removeCliente(${id})">Excluir</button>
     `
     linha.innerHTML = conteudoLinha;
     return linha;
