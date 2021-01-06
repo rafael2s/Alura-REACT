@@ -31,14 +31,14 @@ const deletaCliente = id => {
     })
 }
 
-const detalhaCliente = id => {
-    return fetch(`http://localhost:4000/clientes/cliente/${id}`, {
-        method: "GET"
+const detalhaCliente = id => { 
+    return fetch(`http:localhost:4000/clientes/cliente/${id}`, {
+      method: "GET"
     })
-    .then(resposta => {
-        return resposta.JSON()
-    })
-}
+      .then(resposta => {
+        return resposta.json();
+      })
+  }
 
 const editaCliente = (id, cpf, nome) => {
     const json = JSON.stringify({
