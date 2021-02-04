@@ -1,10 +1,10 @@
-import initCadastro from './componentes/cadastro/componente-cadastro';
-import initTabela from './componentes/lista/listagem-cliente';
+import inicializaCadastro from './componentes/cadastro/componente-cadastro';
+import inicializaTabela from './componentes/lista/listagem-cliente';
 import initEdicao from './componentes/edita/form-edicao';
 
 const rotas = {
-  '/': initTabela,
-  '/cadastro': initCadastro,
+  '/': inicializaTabela,
+  '/cadastro': inicializaCadastro,
   '/edita': initEdicao
 };
 
@@ -33,4 +33,11 @@ window.onpopstate = () => {
   rootDiv.appendChild(rota());
 };
 
+window.navegacao = navegacao; 
+
+window.onpopstate = () => {
+  
+  rootDiv.innerHTML = "";
+  rootDiv.appendChild(rotas[window.location.pathname]())
+}
 export default navegacao;
