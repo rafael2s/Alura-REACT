@@ -1,7 +1,5 @@
 import { deletaCliente, listarClientes} from '../../api/cliente.js'
 import "../../assets/css/clientes.css"
-import inicializaCadastro from '../cadastro/componente-cadastro'
-
 
 const removeCliente = (id) => {
   if(confirm("Deseja deletar o cliente ?")){
@@ -10,7 +8,18 @@ const removeCliente = (id) => {
   }
 }
 
-const criaCorpoTabela = ( tabela ) => {
+const criarBotaoExcluir = (id) => {
+  const botao = document.createElement('button')
+  botao.classList.add('btn', 'btn-danger')
+  botao.innerHTML = 'Excluir'
+
+  botao.addEventListener('click', ()=> { 
+    removeCliente(id)
+  })
+  return botao
+}
+
+const criaCorpoTabela = ( tabela ) =>  { 
 
   const corpoTabela = document.createElement('tbody')
 
@@ -20,12 +29,12 @@ const criaCorpoTabela = ( tabela ) => {
     const conteudoLinha = `
     <td>${cpf}</td>
     <td>${nome}</td>
-    <button type="button" class="btn btn-danger" onclick="removeCliente(${id})">Excluir</button>
-    <a href="edita-clientes.html?id=${id}">
-    <button type=""button class="btn btn-info">Editar</button>
-    </a>       
+  
+    <button type="button" class="btn btn-info" onclick="navegacao('/edita?id=${id}'); return false;">Editar</button>
+   
 `
     linha.innerHTML = conteudoLinha;
+    linha.appendChild(criarBotaoExcluir(id))
     return linha;
   };
 
@@ -37,9 +46,10 @@ const criaCorpoTabela = ( tabela ) => {
   
    )
    tabela.appendChild(corpoTabela)
+
 }
 
-const inicializaTabela = () => {
+const inicializaTabela = () => { 
 
   const cabecalho = `
   <thead class="thead-dark">
@@ -52,21 +62,25 @@ const inicializaTabela = () => {
     </tr>
   </thead>
 `
-
 const tabela = document.createElement("table")
-
 tabela.innerHTML = cabecalho
 tabela.classList.add("table")
 
 criaCorpoTabela(tabela)
 
-return tabela;
+return tabela
 }
 
-export default inicializaTabela;
-  
+
+export default inicializaTabela
+
+
+
+
 
   
   
-
+  
+  
+ 
 

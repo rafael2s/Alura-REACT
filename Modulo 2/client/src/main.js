@@ -1,4 +1,3 @@
-import './assets/css/clientes.css';
-import navegacao from './router';
+import { navegacao } from "./router"
 
-navegacao(window.location.pathname);
+navegacao( window.location.pathname )
